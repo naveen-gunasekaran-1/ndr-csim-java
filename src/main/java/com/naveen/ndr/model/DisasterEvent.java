@@ -1,70 +1,78 @@
 package com.naveen.ndr.model;
 
-import jdk.jfr.EventType;
-
 public class DisasterEvent {
-    //defining all the data need to identify a disaster
-    private EventType eventType;
+    // Unique identifier for the event
     private String eventId;
+
+    // Type of disaster (Flood, Cyclone, Wildfire, etc.)
+    private EventType eventType;
+
+    // Which state generated this event
     private String originState;
-    private int serverityLevel;
-    private long timeStamp;
+
+    // Core severity factor inputs
     private int populationAffected;
     private int infraDamageLevel;
     private int accessibilityLevel;
     private double spreadRate;
     private int cascadingRiskLevel;
-    private String priorityLevel;
+
+    // Timestamp
+    private long timestamp;
+
+    // Final computed severity score (0–100)
     private int severityScore;
-    //construtor
-    public DisasterEvent(String eventId, String originState, int serverityLevel, long timeStamp, int populationAffected,
-                         int infraDamageLevel,int cascadingRiskLevel, int accessibilityLevel, double spreadRate, String priorityLevel, int severityScore, EventType eventType)
-        {
+
+    // Priority label (Critical, High, Medium, Low) — optional
+    private String priorityLevel;
+
+    // Constructor (no logic)
+    public DisasterEvent(String eventId, EventType eventType, String originState,
+                         int populationAffected, int infraDamageLevel, int accessibilityLevel,
+                         double spreadRate, int cascadingRiskLevel, long timestamp) {
         this.eventId = eventId;
+        this.eventType = eventType;
         this.originState = originState;
-        this.serverityLevel = serverityLevel;
-        this.timeStamp = timeStamp;
         this.populationAffected = populationAffected;
         this.infraDamageLevel = infraDamageLevel;
         this.accessibilityLevel = accessibilityLevel;
         this.spreadRate = spreadRate;
-        this.priorityLevel = priorityLevel;
-        this.severityScore = severityScore;
-        this.eventType = eventType;
         this.cascadingRiskLevel = cascadingRiskLevel;
-        this.priorityLevel = priorityLevel;
-        this.severityScore = severityScore;
-        this.eventType = eventType;
-        }
-}
-//getters and setters
-public String getEventId() { return eventId; }
-public EventType getEventType() { return eventType; }
-public String getOriginState() { return originState; }
-public int getPopulationAffected() { return populationAffected; }
-public int getInfraDamageLevel() { return infraDamageLevel; }
-public int getAccessibilityLevel() { return accessibilityLevel; }
-public double getSpreadRate() { return spreadRate; }
-public int getCascadingRiskLevel() { return cascadingRiskLevel; }
-public long getTimestamp() { return timestamp; }
-public int getSeverityScore() { return severityScore; }
-public String getPriorityLevel() { return priorityLevel; }
-public void setSeverityScore(int severityScore) { this.severityScore = severityScore; }
-public void setPriorityLevel(String priorityLevel) { this.priorityLevel = priorityLevel; }
+        this.timestamp = timestamp;
+    }
 
-@Override
-public String toString() {
-    return "DisasterEvent{" +
-    "eventId='" + eventId + '\'' +
-            ", eventType=" + eventType +
-            ", originState='" + originState + '\'' +
-            ", populationAffected=" + populationAffected +
-            ", infraDamageLevel=" + infraDamageLevel +
-            ", accessibilityLevel=" + accessibilityLevel +
-            ", spreadRate=" + spreadRate +
-            ", cascadingRiskLevel=" + cascadingRiskLevel +
-            ", timestamp=" + timestamp +
-            ", severityScore=" + severityScore +
-            ", priorityLevel='" + priorityLevel + '\'' +
-            '}';
+    // Getters and Setters
+    public String getEventId() { return eventId; }
+    public EventType getEventType() { return eventType; }
+    public String getOriginState() { return originState; }
+    public int getPopulationAffected() { return populationAffected; }
+    public int getInfraDamageLevel() { return infraDamageLevel; }
+    public int getAccessibilityLevel() { return accessibilityLevel; }
+    public double getSpreadRate() { return spreadRate; }
+    public int getCascadingRiskLevel() { return cascadingRiskLevel; }
+    public long getTimestamp() { return timestamp; }
+    public int getSeverityScore() { return severityScore; }
+    public String getPriorityLevel() { return priorityLevel; }
+
+    public void setSeverityScore(int severityScore) { this.severityScore = severityScore; }
+    public void setPriorityLevel(String priorityLevel) { this.priorityLevel = priorityLevel; }
+
+    // Useful summary for reporting
+    @Override
+    public String toString() {
+        return "DisasterEvent{" +
+                "eventId='" + eventId + '\'' +
+                ", eventType=" + eventType +
+                ", originState='" + originState + '\'' +
+                ", populationAffected=" + populationAffected +
+                ", infraDamageLevel=" + infraDamageLevel +
+                ", accessibilityLevel=" + accessibilityLevel +
+                ", spreadRate=" + spreadRate +
+                ", cascadingRiskLevel=" + cascadingRiskLevel +
+                ", timestamp=" + timestamp +
+                ", severityScore=" + severityScore +
+                ", priorityLevel='" + priorityLevel + '\'' +
+                '}';
+    }
 }
+
